@@ -1,0 +1,102 @@
+img{
+	width: 100%;
+	border: 0;
+}
+
+.containerBox{
+	position: relative;
+	display: inline-block;
+}
+.textBox{
+	position: absolute;
+	top: 10px;
+	height: 100%;
+	text-align: left;
+	width: 100%;
+}
+.textBox:before{
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+		
+h1{
+	font-family: Verdana;
+	display: inline-block;
+	font-size: 90px;
+	color: #FFF;
+}
+
+h2{
+	font-family: "Lucida Sans", "sans-serif";
+}
+
+h3{
+	font-size: 40px;
+	font-family: Arial;
+	text-align: center;
+}
+
+h4{
+	font-size: 25px;
+}
+
+input[type=text]{
+	width: 45%;
+	margin: -18px 0;
+	padding: 12px 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.inputmiddle{
+	margin: auto;
+	top: 10px;
+	text-align: center;
+}
+
+.displayBox{
+	float: left;
+	margin: 10px;
+	padding: 10px;
+	width: 200px;
+	max-width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.displayBox:hover{
+	background-color: #8ac731;
+}
+
+button{
+	padding: 12px 20px;
+	border-radius: 10px;
+	box-shadow: 0 5px #999;
+	background-color: #3e8e41;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td{
+	text-align: left;
+	padding: 8px;
+}
+
+th{
+	font-weight: bold;
+}
+
+tr:nth-child(even){
+	background-color: #3e8e41;
+	color: white;
+}
