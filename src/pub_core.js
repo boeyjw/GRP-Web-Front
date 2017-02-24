@@ -1,6 +1,6 @@
-var pubView = angular.module('pubView', []);
+var replantDisplay= angular.module('replantDisplay', []);
 
-pubView.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+replantDisplay.controller('displayCtrl', ['$scope', '$http', function($scope, $http) {
 
 
 
@@ -8,8 +8,8 @@ var refresh = function() {
   $http.get('/GBIFF').success(function(response) {
     console.log("I got the data I requested");
     $scope.GBIFF = response;
-    $scope.contact = "";
   });
 };
 
 refresh();
+}
