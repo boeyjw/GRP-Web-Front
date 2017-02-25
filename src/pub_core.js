@@ -1,15 +1,17 @@
 var replantDisplay= angular.module('replantDisplay', []);
 
-replantDisplay.controller('displayCtrl', ['$scope', '$http', function($scope, $http) {
+replantDisplay.controller('displayCtrl', function($scope, $http) {
 
-
-
-var refresh = function() {
-  $http.get('/GBIFF').success(function(response) {
+  function GBIF(){
+  $http.get('/GBIF').then(function(response) {
     console.log("I got the data I requested");
-    $scope.GBIFF = response;
+    $scope.GBIF = response.data;
+    console.log(response);
+  }, function(response) {
+    console.log('Error: ' + response);
   });
-};
-
-refresh();
 }
+
+
+
+

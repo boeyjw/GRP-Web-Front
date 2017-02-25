@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "replantDisplay">
 <head>
   <link rel="stylesheet" type="text/css" href="maincss.css">
 
@@ -12,13 +12,20 @@
 
   <script>
     
-    var app = angular.module("replantDisplay", []);
+    var app = angular.module('replantDisplay', []);
 
-    app.controller("displayCtrl", function($scope){
+    app.controller("displayCtrl", function($scope, $http){
 
-      //to be filled
+     var refresh = function() {
+  $http.get('/GBIF').then(function(response) {
+    console.log("I got the data I requested");
+    $scope.GBIF = response.data;
+  });
+};
 
-    });
+refresh();
+
+});
 
   </script>
 
@@ -42,9 +49,9 @@
 
     </tr>
 
-    <tr ng-repeat="db in GBIFF">
+    <tr ng-repeat="db in GBIF">
       
-      <td>{{ db.coreID }}</td>
+      <td>{{ db.taxonID }}</td>
       <td>{{ (variable 2) }}</td>
 
     </tr>
