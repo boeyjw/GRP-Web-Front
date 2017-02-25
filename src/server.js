@@ -8,9 +8,13 @@ var path = require('path');
 
 mongoose.connect('mongodb://127.0.0.1:27017/GBIF');
 
-app.use(express.static(path.join(__dirname ,'public')));
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
+app.use(bodyParser.json({type: 'application/vnd.api+json'}));
+app.use(methodOverride());
+
 
 app.listen(3000);
 console.log("App listening on port 3000");
@@ -56,11 +60,11 @@ var Schema = mongoose.Schema({
 
 });
 
-var GBIF = mongoose.model('GBIFF', Schema);
+var GBIF = mongoose.model('GBIF', Schema);
 
 
 app.get('/GBIF', function (req, res) {
-	GBIF.find(function(err,data){
+	GBIF.find(function(err , data){
 			if(err){
 				res.send(err)
 			}else{
@@ -79,3 +83,8 @@ app.get('/GBIF', function(req,res){
 		}
 	});
 });
+
+app.get('*', function(req, res){
+	res.sendFile('./public/testing.html', { root: __dirname });
+});
+
