@@ -11,7 +11,3 @@ replantDisplay.controller('displayCtrl', function($scope, $http) {
     console.log('Error: ' + response);
   });
 }
-
-
-
-

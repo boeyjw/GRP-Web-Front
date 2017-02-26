@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var path = require('path');
 
-mongoose.connect('mongodb://127.0.0.1:27017/GBIF');
+mongoose.connect('mongodb://127.0.0.1:27017/tsdb');
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -130,28 +130,36 @@ var GBIF = mongoose.model('GBIF', Schema);
 var NCBI = mongoose.model('NCBI', nSchema);
 
 
-app.get('/GBIF', function (req, res) {
+app.get('/gbif', function (req, res) {
 	GBIF.find(function(err , data){
-			if(err){
-				res.send(err)
-			}else{
-			res.send(data);
-		}
+		if(err)
+			res.send(err)
+
+		res.json(data);
 	});
 });
 
-app.get('/GBIF', function(req,res){
+app.get('/gbif', function(req,res){
 	GBIF.find({nameAccordingTo: 'value'}, function(err, data){
-		if(err){
-			res.send(err.message);
-		}
-		else{
-			res.send(data);
-		}
+		if(err)
+			res.send(err.message)
+
+		res.json(data);
+	});
+});
+
+app.get('/gbif/:taxonID', function(req, res) {
+	GBIF.find({
+		taxonID : req.params.taxonID
+	}, function(err, data) {
+		if(err)
+			res.send(err)
+
+		res.json(data);
 	});
 });
 
 app.get('*', function(req, res){
-	res.sendFile('./testing.html', { root: __dirname });
+	res.sendFile('./replant_HomePage.html', { root: __dirname + '/public' });
 });
 
