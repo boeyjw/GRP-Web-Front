@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var NcbiSchema = mongoose.Schema({
+var NcbiSchema = new mongoose.Schema({
 	_id : mongoose.Schema.Types.ObjectId,
 	tax_id : Number,
 	parent_tax_id : Number,
@@ -38,7 +38,7 @@ var NcbiSchema = mongoose.Schema({
 	}]
 });
 
-var Ncbi = mongoose.model('Ncbi', NcbiSchema);
+var Ncbi = mongoose.model('Ncbi', NcbiSchema, "ncbi");
 
 module.exports = {
 	Ncbi: Ncbi

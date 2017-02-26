@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var GbifSchema = mongoose.Schema({
+var GbifSchema = new mongoose.Schema({
 	_id : mongoose.Schema.Types.ObjectId,
 	taxonID : Number,
 	datasetID : String,
@@ -68,7 +68,7 @@ var GbifSchema = mongoose.Schema({
 	}]
 });
 
-var Gbif = mongoose.model('Gbif', GbifSchema);
+var Gbif = mongoose.model("Gbif", GbifSchema, "gbif");
 
 module.exports = {
 	Gbif: Gbif

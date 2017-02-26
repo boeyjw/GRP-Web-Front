@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var path = require('path');
 
-mongoose.connect('mongodb://127.0.0.1:27017/tsdb');
+mongoose.connect('mongodb://localhost/tsdb');
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -20,10 +20,10 @@ app.listen(3000);
 console.log("App listening on port 3000");
 
 //============================GBIF=============================================
-var GBIF = require("./models/gbif").gbif;
+var GBIF = require("./models/gbif").Gbif;
 
 app.get('/gbif', function (req, res) {
-	GBIF.find(function(err , data){
+	GBIF.findOne(function(err , data){
 		if(err)
 			res.send(err)
 
@@ -52,10 +52,10 @@ app.get('/gbif/:taxonID', function(req, res) {
 });
 
 //============================NCBI=============================================
-var NCBI = require("./models/ncbi").ncbi;
+var NCBI = require("./models/ncbi").Ncbi;
 
 app.get('/ncbi', function (req, res) {
-	GBIF.find(function(err , data){
+	NCBI.findOne(function(err , data){
 		if(err)
 			res.send(err)
 
@@ -64,7 +64,7 @@ app.get('/ncbi', function (req, res) {
 });
 
 app.get('/ncbi/:tax_id', function(req, res) {
-	GBIF.find({
+	NCBI.find({
 		taxonID : req.params.tax_id
 	}, function(err, data) {
 		if(err)
@@ -72,4 +72,9 @@ app.get('/ncbi/:tax_id', function(req, res) {
 
 		res.json(data);
 	});
+});
+
+//=============================HOMEPAGE=========================================
+app.get('/', function(req, res) {
+	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
 });

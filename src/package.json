@@ -9,11 +9,21 @@
     "mongoose": "^4.8.4",
     "mongoose-auto-increment": "^5.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boeyjw/wign.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boeyjw/wign/issues"
+  },
+  "homepage": "https://github.com/boeyjw/wign#readme"
 }
