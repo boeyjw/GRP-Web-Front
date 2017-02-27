@@ -19,8 +19,21 @@ app.use(methodOverride());
 app.listen(3000);
 console.log("App listening on port 3000");
 
+var Merge = require("./models/merge.js").Merge;
+
+app.get('/test', function(req, res) {
+	Merge.findOne({}, function(err, data) {
+		if(err)
+			res.send(err)
+		res.json(data)
+	});
+});
+
+app.get('/', function(req, res) {
+	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
+});
 //============================GBIF=============================================
-var GBIF = require("./models/gbif").Gbif;
+/*var GBIF = require("./models/gbif").Gbif;
 
 app.get('/gbif', function (req, res) {
 	GBIF.findOne(function(err , data){
@@ -78,3 +91,13 @@ app.get('/ncbi/:tax_id', function(req, res) {
 app.get('/', function(req, res) {
 	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
 });
+
+app.get('/search/:term', function(req, res) {
+	GBIF.findOne({
+		scientificName: {$regex: req.params.term}
+	}, function(err, res) {
+		if(err)
+			res.send(err)
+		res.json(res);
+	});
+});*/

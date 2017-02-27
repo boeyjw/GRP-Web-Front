@@ -17,8 +17,14 @@
 		app.controller("replantCtrl", function($scope){
 
 			$scope.searchKey = function(){
-				//To be filled later
-				//boey: requires routing to 2 collections. Probably route to a delegation function
+				console.log($scope.searchterm);
+				$http.get('/search/' + $scope.searchterm).then(function(res) {
+					//$scope.publish = res.data;
+					console.log(res);
+				})
+				.catch(function(err) {
+					console.log(err);
+				})
 			}
 
 		});
