@@ -10,7 +10,7 @@
 
 <!--  The Query Block  -->
 
-	<script>
+	<!-- <script>
 		
 		var app = angular.module("replantMain", []);
 
@@ -29,7 +29,7 @@
 
 		});
 
-	</script>
+	</script> -->
 
 <!--  The Query Block End  -->
 
@@ -69,12 +69,32 @@
 		</form>
 
 	</div>
+	<div ng-app="replantMain" ng-controller="replantCtrl">
+	<table class = "table">
+	<thead>
+		<tr>
+			<th>taxonID</th>
+			<th>ScientificName</th>
+			<th>genericName</th>
+
+		</tr>
+	</thead>
+	<tbody>
+			<tr ng-repeat = "db in merge ">
+			<td>{{db.taxonID}}</td>
+			</tr>
+	</tbody>
+	</table>
+		
+
+	</div>
 
 
 
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>
 	</footer>
+	<script src = "controller/controller.js"></script>
 
 </body>
 </html>

@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var path = require('path');
 
-mongoose.connect('mongodb://localhost/tsdb');
+mongoose.connect('mongodb://localhost/GBIF');
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
@@ -21,7 +21,8 @@ console.log("App listening on port 3000");
 
 var Merge = require("./models/merge.js").Merge;
 
-app.get('/test', function(req, res) {
+app.get('/Merge', function(req, res) {
+	console.log("i received a GET request");
 	Merge.findOne({}, function(err, data) {
 		if(err)
 			res.send(err)
