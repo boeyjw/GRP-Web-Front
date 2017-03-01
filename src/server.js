@@ -23,10 +23,18 @@ var Merge = require("./models/merge.js").Merge;
 
 app.get('/Merge', function(req, res) {
 	console.log("i received a GET request");
-	Merge.findOne({}, function(err, data) {
+	Merge.find({$text: {$search}}, function(err, data) {
 		if(err)
 			res.send(err)
 		res.json(data)
+	});
+});
+
+app.get('/Merge/:search', function(req, res) {
+	Merge.find({"scientificName": {$regex :"$"  }}, function(err, pubs_res) {
+		if(err)
+			res.send(err);
+		res.json(data);
 	});
 });
 

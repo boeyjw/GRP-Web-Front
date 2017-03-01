@@ -1,9 +1,9 @@
-<html>
+<html ng-app="replantMain">
 <head>
 	<title>Replant</title>
 	<link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
-
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 
 </head>
 <body>
@@ -28,6 +28,7 @@
 			}
 
 		});
+
 
 	</script> -->
 
@@ -58,11 +59,11 @@
 
 	<h3>Search here. Anything.</h3>
 	
-	<div ng-app="replantMain" ng-controller="replantCtrl" class="inputmiddle">
+	<div  ng-controller="replantCtrl" class="inputmiddle">
 
 		<form class="form-wrapper cf">
 
-			<input type="text" name="mainsearch" placeholder="enter here">
+			<input type="text" ng-model="search1.$" name="mainsearch" placeholder="enter here">
 
 			<button>Search!</button>
 
@@ -76,12 +77,16 @@
 			<th>taxonID</th>
 			<th>ScientificName</th>
 			<th>genericName</th>
+			<th>&nbsp;</th>
 
 		</tr>
 	</thead>
 	<tbody>
-			<tr ng-repeat = "db in merge ">
-			<td>{{db.taxonID}}</td>
+			<tr ng-repeat= "db in merge ">
+			<form ng-submit="search()">
+			<td>{{db._id}}</td>
+			<td>{{db.ScientificName}}</td>
+			</form>
 			</tr>
 	</tbody>
 	</table>
@@ -89,12 +94,11 @@
 
 	</div>
 
-
-
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>
 	</footer>
 	<script src = "controller/controller.js"></script>
+	
 
 </body>
 </html>
