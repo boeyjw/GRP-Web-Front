@@ -21,17 +21,17 @@ console.log("App listening on port 3000");
 
 var Merge = require("./models/merge.js").Merge;
 
-app.get('/Merge', function(req, res) {
+/*app.get('/Merge', function(req, res) {
 	console.log("i received a GET request");
 	Merge.find({$text: {$search}}, function(err, data) {
 		if(err)
 			res.send(err)
 		res.json(data)
 	});
-});
+});*/
 
 app.get('/Merge/:search', function(req, res) {
-	Merge.find({"scientificName": {$regex :"$"  }}, function(err, pubs_res) {
+	Merge.find({"scientificName": {$regex :"$"  }}, function(err, data) {
 		if(err)
 			res.send(err);
 		res.json(data);

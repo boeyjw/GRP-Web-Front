@@ -60,15 +60,16 @@
 	<h3>Search here. Anything.</h3>
 	
 	<div  ng-controller="replantCtrl" class="inputmiddle">
+	<div>
 
 		<form class="form-wrapper cf">
 
-			<input type="text" ng-model="search1.$" name="mainsearch" placeholder="enter here">
-
-			<button>Search!</button>
-
+			<input type="text" ng-model="search1" name="mainsearch" placeholder="enter here">
+			<span>
+			<button type = "button" ng-click="search()">Search!</button>
+			</span>
 		</form>
-
+	</div>
 	</div>
 	<div ng-app="replantMain" ng-controller="replantCtrl">
 	<table class = "table">

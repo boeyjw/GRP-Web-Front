@@ -9,7 +9,7 @@ myApp.controller('replantCtrl',['$scope','$http',function($scope,$http){
 	});
 		
 
-	$scope.search = function(){
+	$scope.search = function(name){
 
 		$http.get('/Merge').success(function(response){
 		console.log("I got the data i requested");
