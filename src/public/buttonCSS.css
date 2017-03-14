@@ -1,0 +1,95 @@
+.homeButton{
+		overflow: visible;
+        /*position: relative;*/
+        float: left;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        height: 40px;
+        width: 110px;
+        font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        color: #fff;
+        text-transform: uppercase;
+        background: #266A2E;
+        -moz-border-radius: 3px 3px 3px 3px;
+        -webkit-border-radius: 3px 3px 3px 3px;
+        border-radius: 3px 3px 3px 3px;      
+        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.homeButton:hover{		
+        background: #77ab59;
+    }	
+      
+.homeButton:active,
+.homeButton:focus{   
+        background: #77ab59;    
+    }
+    
+.homeButton:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #266A2E transparent;
+        top: 12px;
+        left: -6px;
+    }
+    
+.homeButton:hover:before{
+        border-right-color: #77ab59;
+    }
+    
+.homeButton:focus:before{
+        border-right-color: #77ab59;
+    }    
+    
+.homeButton::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+/*css for input box on display page*/
+
+.searchInput{
+        width: 240px;
+        height: 20px;
+        padding: 10px 5px;
+        float: left;    
+        font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        border: 0;
+        background: #eee;
+        -moz-border-radius: 3px 0 0 3px;
+        -webkit-border-radius: 3px 0 0 3px;
+        border-radius: 3px 0 0 3px;
+
+        margin: 0px auto 10px auto;
+        background: #444;
+        background: #c9df8a;    
+    }
+    
+.searchInput:focus {
+        outline: 0;
+        background: #fff;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+.searchInput::-webkit-input-placeholder {
+       color: #999;
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+.searchInput:-moz-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }
+    
+.searchInput:-ms-input-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }

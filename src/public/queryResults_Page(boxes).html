@@ -2,21 +2,28 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="maincss.css">
+	<link rel="stylesheet" type="text/css" href="buttonCSS.css">
 	<title>Search Results</title>
 </head>
 
 <body>
 
-	<div class="containerBox">
-		<div class="textBox">
-			<h1>Replant.</h1>
-		</div>
+	<header><h1>Replant</h1></header>
 
-		<img src="pic1.jpg" align="middle">
+	<div class="margin1">
 
+		<form>
+			
+			<button class="homeButton">Home Page</button>
+
+			<input class="searchInput" type="text" ng-model="search1" name="mainsearch" placeholder="enter here">
+			<span>
+			<button class="homeButton" type = "button" ng-click="search()">Search!</button>
+			</span>
+		</form>
 	</div>
 
-	<h2>Search Results:</h2>
+	<br><br><h2>Search Results:</h2>
 
 	<div class="displayBox">
 		
@@ -80,6 +87,19 @@
 		<p>info 3</p>
 
 	</div>
+
+	<!--<div class="containerBox">
+		<div class="textBox">
+			<h1>Replant.</h1>
+		</div>
+
+		<img src="pic1.jpg" align="middle">
+
+	</div> -->
+
+	<footer>
+		<p>Software Engineering Group Project | G52GRP</p>
+	</footer>
 
 </body>
 </html>
