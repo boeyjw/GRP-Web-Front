@@ -3,13 +3,14 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="maincss.css">
 	<link rel="stylesheet" type="text/css" href="buttonCSS.css">
+	<link rel="stylesheet" type="text/css" href="resultsBoxes.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 	<title>Search Results</title>
 </head>
 
-<body>
+<body ng-app="resultsPage">
 
 	<header><h1>Replant</h1></header>
 
@@ -30,92 +31,33 @@
 			<button class="homeButton" type = "button" ng-click="search()">Search!</button>
 			</span>
 
-	<!-- <div class="margin1">
-
-		<form>
-			
-			<button class="homeButton">Home Page</button>
-
-			<input class="searchInput" type="text" ng-model="search1" name="mainsearch" placeholder="enter here">
-			<span>
-			<button class="homeButton" type = "button" ng-click="search()">Search!</button>
-			</span>
-		</form>
-	</div> -->
-
 	<br><br><h2>Search Results:</h2>
 
-	<div class="displayBox">
-		
-		<h4>result 1</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
+	<ul class="rig columns-3" ng-controller="Ctrllr">
+		<li>
+			<img src="pic1.jpg">
+			<h3 class="h3class">Scientific Name</h3>
+			<p>Taxon Rank</p>
+			<p>distribution</p>
+		</li>
 
-	</div>
+		<li ng repeat="data in records"> <!-- to be filled -->
+			<img src="{{imageLink}}">
+			<h3 class="h3class">{{scientificName}}</h3>
+			<p>{{taxonRank}}</p>
+			<p>{{distribution}}</p>
+		</li>
+	</ul>
 
-	<div class="displayBox">
-		
-		<h4>result 2</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
+	<script type="text/javascript">
+		var app = angular.module("resultsPage", []);
 
-	</div>
-
-	<div class="displayBox">
-		
-		<h4>result 3</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
-
-	</div>
-
-	<div class="displayBox">
-		
-		<h4>result 4</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
-
-	</div>
-
-	<div class="displayBox">
-		
-		<h4>result 5</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
-
-	</div>
-
-	<div class="displayBox">
-		
-		<h4>result 6</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
-
-	</div>
-
-	<div class="displayBox">
-		
-		<h4>result 7</h4>
-		<p>info 1</p>
-		<p>info 2</p>
-		<p>info 3</p>
-
-	</div>
-
-	<!--<div class="containerBox">
-		<div class="textBox">
-			<h1>Replant.</h1>
-		</div>
-
-		<img src="pic1.jpg" align="middle">
-
-	</div> -->
+		app.controller("Ctrllr", function($scope){
+			$scope.records = [
+				//to be filled
+			]
+		});
+	</script>
 
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>
