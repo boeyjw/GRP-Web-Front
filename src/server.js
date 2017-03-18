@@ -29,34 +29,43 @@ console.log("App listening on port 3000");
 
 
 // search for scientific name
-app.post('/search', function(req, res) {
+app.post('/', function(req, res) {
 	db.merge.find({"$text" :{
 		"$search" : req.body.name
 	}
-},{canonicalName:1, scientificName :1
-}).toArray(function(err, data){
+},{ $or:[{canonicalName :1}, {scientificName:1}]}).toArray(function(err, data){
 	res.send(data);
 })
 });
 
 //findOne
-/*
+
 app.get('/Merge', function(req,res){
-	db.merge.findOne("_id": {})
-})*/
+	db.merge.findOne({"_id": { "$in" :[/^req.body.name/i]}}).toArray(function(err, data){res.send(data);
+})
+});
 
 /*app.get('/result', function(req, res){
 	db.merge.find
 
 })*/
-app.get('/Merge', function(req,res){
+/*app.get('/Merge', function(req,res){
 	db.merge.find({"canonicalName": {$text :{
 		"search": req.body.name
 	}}})
 
-
-
+})*/
+app.post('/', function(req, res) {
+	db.merge.find({"$text" :{
+		"$search" : req.body.name
+	}
+},{ taxonRank :1}).toArray(function(err, data){
+	res.send(data);
 })
+});
+
+
+
 app.get('/', function(req, res) {
 	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
 });
