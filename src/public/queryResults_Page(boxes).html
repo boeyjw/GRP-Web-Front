@@ -34,19 +34,19 @@
 	<br><br><h2>Search Results:</h2>
 
 	<ul class="rig columns-3" ng-controller="Ctrllr">
-		<li>
+		<li><a href="#">
 			<img src="pic1.jpg">
 			<h3 class="h3class">Scientific Name</h3>
 			<p>Taxon Rank</p>
 			<p>distribution</p>
-		</li>
+		</a></li>
 
-		<li ng repeat="data in records"> <!-- to be filled -->
+		<li ng repeat="data in records"><a href="#"> <!-- to be filled -->
 			<img src="{{imageLink}}">
 			<h3 class="h3class">{{scientificName}}</h3>
 			<p>{{taxonRank}}</p>
 			<p>{{distribution}}</p>
-		</li>
+		</a></li>
 	</ul>
 
 	<script type="text/javascript">

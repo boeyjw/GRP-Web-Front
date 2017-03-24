@@ -70,3 +70,7 @@ ul.rig.columns-4 li{
 .h3class{
 	font-size: 25px;
 }
+
+a{
+	text-decoration: none;
+}
