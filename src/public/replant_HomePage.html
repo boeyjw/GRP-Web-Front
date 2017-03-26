@@ -2,8 +2,16 @@
 <head>
 	<title>Replant</title>
 	<link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+	<!-- link to angularJS libraries -->
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+	<!-- Link to the main js file -->
+
+	<script type="text/javascript" src="theMainScript.js"></script>
 
 </head>
 <body>
@@ -58,6 +66,8 @@
 	</div>
 
 	<h3>Search here. Anything.</h3>
+
+	<a href="#/result">results page</a>
 	
 	<div  ng-controller="replantCtrl" class="inputmiddle">
 	<div>

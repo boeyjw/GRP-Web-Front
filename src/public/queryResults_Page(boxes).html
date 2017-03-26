@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<!-- link to all CSS files -->
+
 	<link rel="stylesheet" type="text/css" href="maincss.css">
 	<link rel="stylesheet" type="text/css" href="buttonCSS.css">
 	<link rel="stylesheet" type="text/css" href="resultsBoxes.css">
 
+	<!-- Link to all angularJS library -->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+	<!-- Link to the main js file -->
+
+	<script type="text/javascript" src="theMainScript.js"></script>
 
 	<title>Search Results</title>
 </head>
 
-<body ng-app="resultsPage">
+<body ng-app="replantMain">
 
 	<header><h1>Replant</h1></header>
 
@@ -18,7 +29,7 @@
 
 	<nav>
 		<ul>
-			<li><a href="replant_HomePage.html">Home</a></li>
+			<li><a href="#/home">Home</a></li>
 		</ul>
 	</nav>
 
@@ -34,7 +45,7 @@
 	<br><br><h2>Search Results:</h2>
 
 	<ul class="rig columns-3" ng-controller="Ctrllr">
-		<li><a href="#">
+		<li><a href="">
 			<img src="pic1.jpg">
 			<h3 class="h3class">Scientific Name</h3>
 			<p>Taxon Rank</p>
@@ -48,16 +59,6 @@
 			<p>{{distribution}}</p>
 		</a></li>
 	</ul>
-
-	<script type="text/javascript">
-		var app = angular.module("resultsPage", []);
-
-		app.controller("Ctrllr", function($scope){
-			$scope.records = [
-				//to be filled
-			]
-		});
-	</script>
 
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>
