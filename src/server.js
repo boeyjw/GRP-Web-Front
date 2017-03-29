@@ -1,3 +1,6 @@
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var express = require('express');
 var app = express();
 var morgan = require('morgan');
@@ -13,37 +16,116 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
 MongoClient.connect(url, function(err, db){
+	if (err)
+{
+	console.log('Unable to connect', err);
+} else {
+	console.log('connected',url);
+}
 
+var collection = db.collection('merge');
+
+
+app.post('/result/:_id', function(req, res){
+	collection.findOne({"$search":_id},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}, function(err,data){
+		if(err){
+			console.log(err);
+		}else{
+		//console.log(data);
+		res.send(data);
+		}
+		})
+	});
+
+app.post('/:name', function(req, res) {
+	collection.find({"$text" :{
+		"$search" : "req.body.query"
+	}
+},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
 	if(err){
-		console.log('connect failed', err);
+		console.log(err);
 	}
 	else{
-		console.log("connected");
-	}
+		console.log(data);
+		//res.send(data)
+
+	
+}
 })
 
+});
 
+/*collection.findOne({taxonID:12},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
+	if(err){
+		console.log(err);
+	}
+	else{
+		console.log(data);
+		//res.send(data)
+
+	
+}
+})
+*/
+/*app.post('/':_id, function(req,res){
+	collection.find().limit(5).toArray(function(err, data){
+		if(err){
+			console.log(err);
+		} else{
+			res.send(data)
+		}
+	})
+});*/
+
+});
 app.listen(3000);
 console.log("App listening on port 3000");
 
 
 
 // search for scientific name
-app.post('/', function(req, res) {
+/*app.post('/', function(req, res) {
 	db.merge.find({"$text" :{
-		"$search" : req.body.name
+		"$search" : "scientificName"
 	}
 },{ $or:[{canonicalName :1}, {scientificName:1}]}).toArray(function(err, data){
+	if(err){
+		console.log(err);
+	}
+	else{
+		console.log(data);
 	res.send(data);
+	
+}
 })
 });
+*/
+
+
+
+/*app.post('/', function(req, res) {
+	db.merge.find({"$text" :{
+		"$search" : "Bryophyta"
+	}
+},{ $or:[{canonicalName :1}, {scientificName:1}]}).toArray(function(err, data){
+	if(err){
+		console.log(err);
+	}
+	else{
+		console.log(data);
+	res.send(data);
+	
+}
+})
+});*/
 
 //findOne
 
-app.get('/Merge', function(req,res){
+/*app.get('/Merge', function(req,res){
 	db.merge.findOne({"_id": { "$in" :[/^req.body.name/i]}}).toArray(function(err, data){res.send(data);
 })
 });
+*/
 
 /*app.get('/result', function(req, res){
 	db.merge.find
@@ -55,7 +137,7 @@ app.get('/Merge', function(req,res){
 	}}})
 
 })*/
-app.post('/', function(req, res) {
+/*app.post('/', function(req, res) {
 	db.merge.find({"$text" :{
 		"$search" : req.body.name
 	}
@@ -63,7 +145,7 @@ app.post('/', function(req, res) {
 	res.send(data);
 })
 });
-
+*/
 
 
 app.get('/', function(req, res) {
