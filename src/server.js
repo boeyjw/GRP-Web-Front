@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/GBIF';
+var url = 'mongodb://localhost:27017/g52grp';
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -26,7 +26,7 @@ MongoClient.connect(url, function(err, db){
 var collection = db.collection('merge');
 
 
-app.post('/result/:_id', function(req, res){
+/*app.post('/result/:_id', function(req, res){
 	collection.findOne({"$search":_id},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}, function(err,data){
 		if(err){
 			console.log(err);
@@ -35,11 +35,12 @@ app.post('/result/:_id', function(req, res){
 		res.send(data);
 		}
 		})
-	});
+	});*/
 
-app.post('/:name', function(req, res) {
+app.get('/find/:name', function(req, res) {
+	console.log(req.params)
 	collection.find({"$text" :{
-		"$search" : "req.body.query"
+		"$search" : req.params.name
 	}
 },{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
 	if(err){
@@ -47,8 +48,7 @@ app.post('/:name', function(req, res) {
 	}
 	else{
 		console.log(data);
-		//res.send(data)
-
+		res.send(data)
 	
 }
 })

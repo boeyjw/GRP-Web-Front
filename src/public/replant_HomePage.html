@@ -72,16 +72,16 @@
 	<div  ng-controller="replantCtrl" class="inputmiddle">
 	<div>
 
-		<form class="form-wrapper cf">
+		<form method ="post" class="form-wrapper cf" ng-submit="search()">
 
-			<input type="text" ng-model="search1" name="mainsearch" placeholder="enter here">
+			<input type="text" ng-model="name" name="name" placeholder="enter here">
 			<span>
-			<button type = "button" ng-click="search()">Search!</button>
+			<button type = "submit">Search!</button>
 			</span>
 		</form>
 	</div>
 	</div>
-	<div ng-app="replantMain" ng-controller="replantCtrl">
+	<!--<div ng-app="replantMain" ng-controller="replantCtrl">-->
 	<table class = "table">
 	<thead>
 		<tr>
@@ -103,7 +103,7 @@
 	</table>
 		
 
-	</div>
+	<!--</div>-->
 
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>
