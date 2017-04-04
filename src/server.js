@@ -1,5 +1,3 @@
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var express = require('express');
 var app = express();
@@ -8,74 +6,74 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/g52grp';
+//var url = 'mongodb://localhost:27017/g52grp';
+var url = 'mongodb://haploid:f1du-c1ary@g52grp-shard-00-00-sdhki.mongodb.net:27017,g52grp-shard-00-01-sdhki.mongodb.net:27017,g52grp-shard-00-02-sdhki.mongodb.net:27017/g52grp?ssl=true&replicaSet=g52grp-shard-0&authSource=admin'
 
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.urlencoded({ 'extended': 'true' }));
 app.use(bodyParser.json());
-app.use(bodyParser.json({type: 'application/vnd.api+json'}));
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-MongoClient.connect(url, function(err, db){
-	if (err)
-{
-	console.log('Unable to connect', err);
-} else {
-	console.log('connected',url);
-}
+MongoClient.connect(url, function(err, db) {
+    if (err) {
+        console.log('Unable to connect', err);
+    } else {
+        console.log('connected', url);
+    }
 
-var collection = db.collection('merge');
+    var collection = db.collection('merge');
 
 
-/*app.post('/result/:_id', function(req, res){
-	collection.findOne({"$search":_id},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}, function(err,data){
-		if(err){
-			console.log(err);
-		}else{
-		//console.log(data);
-		res.send(data);
-		}
-		})
-	});*/
+    /*app.post('/result/:_id', function(req, res){
+    	collection.findOne({"$search":_id},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}, function(err,data){
+    		if(err){
+    			console.log(err);
+    		}else{
+    		//console.log(data);
+    		res.send(data);
+    		}
+    		})
+    	});*/
 
-app.get('/find/:name', function(req, res) {
-	console.log(req.params)
-	collection.find({"$text" :{
-		"$search" : req.params.name
-	}
-},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
-	if(err){
-		console.log(err);
-	}
-	else{
-		console.log(data);
-		res.send(data)
-	
-}
-})
+    app.get('/find/:name', function(req, res) {
+        console.log(req.params)
+        collection.find({
+            "$text": {
+                "$search": req.params.name
+            }
+        }, { scientificName: 1, taxonID: 1, canonicalName: 1, parentTaxId: 1, rank: 1 }).toArray(function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+                res.send(data)
 
-});
+            }
+        })
 
-/*collection.findOne({taxonID:12},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
-	if(err){
-		console.log(err);
-	}
-	else{
-		console.log(data);
-		//res.send(data)
+    });
 
-	
-}
-})
-*/
-/*app.post('/':_id, function(req,res){
-	collection.find().limit(5).toArray(function(err, data){
-		if(err){
-			console.log(err);
-		} else{
-			res.send(data)
-		}
-	})
-});*/
+    /*collection.findOne({taxonID:12},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
+    	if(err){
+    		console.log(err);
+    	}
+    	else{
+    		console.log(data);
+    		//res.send(data)
+
+    	
+    }
+    })
+    */
+    /*app.post('/':_id, function(req,res){
+    	collection.find().limit(5).toArray(function(err, data){
+    		if(err){
+    			console.log(err);
+    		} else{
+    			res.send(data)
+    		}
+    	})
+    });*/
 
 });
 app.listen(3000);
@@ -149,7 +147,7 @@ console.log("App listening on port 3000");
 
 
 app.get('/', function(req, res) {
-	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
+    res.sendFile('./public/replant_HomePage.html', { root: __dirname });
 });
 
 
