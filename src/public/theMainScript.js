@@ -23,9 +23,9 @@ replantMain.config(function($routeProvider) {
 
 
 replantMain.factory('searchService', function() {
-    var savedKeyword = {} //new empty object
+    var searchService = {} //new empty object
 
-    savedKeyword.list = [];
+    searchService.list = [];
 
     //function add
     searchService.add = function(keyword) {

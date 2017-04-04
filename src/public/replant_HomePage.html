@@ -53,23 +53,19 @@
 
 	<h3>Search here. Anything.</h3>
 
-	<a href="#/result">results page</a>
+	<p>this is test 12</p>
 	
 	<div  ng-controller="searchController as search1" class="inputmiddle">
-	<div>
 
-		<form class="form-wrapper cf" ng-submit="search1.addKeyword(search1.newKeyword)">
-
+		<form class="form-wrapper cf">
 			<input type="text" ng-model="search1.newKeyword" placeholder="enter here">
 			<span>
-			<button type = "submit">
-				<a href="#/result">Search!</a>
-			</button>
+				<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)"><button>Search!</button></a>
 			</span>
 		</form>
+
 	</div>
-	</div>
-	<!--<div ng-app="replantMain" ng-controller="replantCtrl">-->
+	
 	<table class = "table">
 	<thead>
 		<tr>

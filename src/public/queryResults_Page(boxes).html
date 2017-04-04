@@ -38,33 +38,37 @@
 	<br>
 
 	<div ng-controller="searchController as search1">
-		<form ng-submit="search1.addKeyword(search1.newKeyword)">
-			<input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter here">
+		<form>
+			<input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter hereeee">
 
 			<span>
-				<button class="homeButton" type = "submit">
-					<a href="#/result">Search!</a>
-				</button>
+				
+					<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)">
+						<button class="homeButton">
+							Search!
+						</button>
+					</a>
 			</span>
 		</form>
 	</div>
 
+
+	<br><br><h2>Search Results:</h2>
 <!--
 	this is how to retrive the search keyword from the resultsController
 -->
 
 <div ng-controller="resultsController as list">
+	<p>entered keyword:</p>
 	<p ng-repeat="keyword in list.searchService">
-		{{ keyword.text }}
+		{{keyword.text}}
 	</p>
 </div>
 
 <!-- end -->
 
-	<br><br><h2>Search Results:</h2>
-
 	<ul class="rig columns-3" ng-controller="Ctrllr">
-		<li><a href="#/view ">
+		<li><a href="#/view">
 			<img src="pic1.jpg">
 			<h3 class="h3class">Scientific Name</h3>
 			<p>Taxon Rank</p>
