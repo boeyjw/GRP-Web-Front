@@ -1,4 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var express = require('express');
 var app = express();
 var morgan = require('morgan');
@@ -6,8 +5,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/g52grp';
-//var url = 'mongodb://haploid:f1du-c1ary@g52grp-shard-00-00-sdhki.mongodb.net:27017,g52grp-shard-00-01-sdhki.mongodb.net:27017,g52grp-shard-00-02-sdhki.mongodb.net:27017/g52grp?ssl=true&replicaSet=g52grp-shard-0&authSource=admin'
+//var url = 'mongodb://localhost:27017/g52grp';
+var url = 'mongodb://haploid:f1du-c1ary@g52grp-shard-00-00-sdhki.mongodb.net:27017,g52grp-shard-00-01-sdhki.mongodb.net:27017,g52grp-shard-00-02-sdhki.mongodb.net:27017/g52grp?ssl=true&replicaSet=g52grp-shard-0&authSource=admin'
     /*
      * Only can be accessed from anywhere but uni network and mobile data.
      * Access uses P2P.
@@ -27,16 +26,17 @@ MongoClient.connect(url, function(err, db) {
     var collection = db.collection('merge');
 
 
-    /*app.post('/result/:_id', function(req, res){
-    	collection.findOne({"$search":_id},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}, function(err,data){
+    app.get('/result/:_id', function(req, res){
+		var objectid = "ObjectId(\"" + req.params._id + "\")";
+    	collection.find(objectid, function(err,data){
     		if(err){
     			console.log(err);
     		}else{
-    		//console.log(data);
+    		console.log(data);
     		res.send(data);
     		}
     		})
-    	});*/
+    	});
 
     app.get('/find/:name', function(req, res) {
         console.log(req.params)
@@ -56,118 +56,10 @@ MongoClient.connect(url, function(err, db) {
 
     });
 
-    /*collection.findOne({taxonID:12},{scientificName:1,taxonID :1 , canonicalName:1,parentTaxId:1, rank:1}).toArray(function(err, data){
-    	if(err){
-    		console.log(err);
-    	}
-    	else{
-    		console.log(data);
-    		//res.send(data)
-
-    	
-    }
-    })
-    */
-    /*app.post('/':_id, function(req,res){
-    	collection.find().limit(5).toArray(function(err, data){
-    		if(err){
-    			console.log(err);
-    		} else{
-    			res.send(data)
-    		}
-    	})
-    });*/
-
 });
 app.listen(3000);
 console.log("App listening on port 3000");
 
-
-
-// search for scientific name
-/*app.post('/', function(req, res) {
-	db.merge.find({"$text" :{
-		"$search" : "scientificName"
-	}
-},{ $or:[{canonicalName :1}, {scientificName:1}]}).toArray(function(err, data){
-	if(err){
-		console.log(err);
-	}
-	else{
-		console.log(data);
-	res.send(data);
-	
-}
-})
-});
-*/
-
-
-
-/*app.post('/', function(req, res) {
-	db.merge.find({"$text" :{
-		"$search" : "Bryophyta"
-	}
-},{ $or:[{canonicalName :1}, {scientificName:1}]}).toArray(function(err, data){
-	if(err){
-		console.log(err);
-	}
-	else{
-		console.log(data);
-	res.send(data);
-	
-}
-})
-});*/
-
-//findOne
-
-/*app.get('/Merge', function(req,res){
-	db.merge.findOne({"_id": { "$in" :[/^req.body.name/i]}}).toArray(function(err, data){res.send(data);
-})
-});
-*/
-
-/*app.get('/result', function(req, res){
-	db.merge.find
-
-})*/
-/*app.get('/Merge', function(req,res){
-	db.merge.find({"canonicalName": {$text :{
-		"search": req.body.name
-	}}})
-
-})*/
-/*app.post('/', function(req, res) {
-	db.merge.find({"$text" :{
-		"$search" : req.body.name
-	}
-},{ taxonRank :1}).toArray(function(err, data){
-	res.send(data);
-})
-});
-*/
-
-
 app.get('/', function(req, res) {
     res.sendFile('./public/replant_Index.html', { root: __dirname });
 });
-
-
-
-
-/*
-//=============================HOMEPAGE=========================================
-app.get('/', function(req, res) {
-	res.sendFile('./public/replant_HomePage.html', {root: __dirname});
-});
-
-app.get('/search/:term', function(req, res) {
-	GBIF.findOne({
-		scientificName: {$regex: req.params.term}
-	}, function(err, res) {
-		if(err)
-			res.send(err)
-		res.json(res);
-	});
-});*/
