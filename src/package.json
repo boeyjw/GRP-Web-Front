@@ -4,10 +4,12 @@
   "description": "server",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.14.1",
     "method-override": "^2.3.7",
     "mongoose": "^4.8.4",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.8.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
