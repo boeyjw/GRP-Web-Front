@@ -48,8 +48,13 @@ replantMain.controller("searchController", function(searchService) {
 });
 
 //controller for second page (queryResults_Page(boxes).html)
-replantMain.controller("resultsController", function(searchService) {
+replantMain.controller("resultsController", function($http, $scope, searchService) {
     var self = this;
 
     self.searchService = searchService.list;
+
+    $http.get('/find/' + searchService.list.pop().text).then(function(res) {
+        console.log(res);
+        $scope.resultset = res.data;
+    })
 });

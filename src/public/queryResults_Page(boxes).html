@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-	<!-- link to all CSS files -->
+    <!-- link to all CSS files -->
 
-	<link rel="stylesheet" type="text/css" href="maincss.css">
-	<link rel="stylesheet" type="text/css" href="buttonCSS.css">
-	<link rel="stylesheet" type="text/css" href="resultsBoxes.css">
+    <link rel="stylesheet" type="text/css" href="maincss.css">
+    <link rel="stylesheet" type="text/css" href="buttonCSS.css">
+    <link rel="stylesheet" type="text/css" href="resultsBoxes.css">
 
-	<!-- Link to all angularJS library -->
+    <!-- Link to all angularJS library -->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 
-	<!-- Link to the main js file -->
+    <!-- Link to the main js file -->
 
-	<script type="text/javascript" src="theMainScript.js"></script>
+    <script type="text/javascript" src="theMainScript.js"></script>
 
-	<title>Search Results</title>
+    <title>Search Results</title>
 </head>
 
 <body ng-app="replantMain">
 
-	<header><h1>Replant</h1></header>
+    <header>
+        <h1>Replant</h1>
+    </header>
 
-	<div class="content">
+    <div class="content">
 
-	<nav>
-		<ul>
-			<li><a href="#/home">Home</a></li>
-		</ul>
-	</nav>
+        <nav>
+            <ul>
+                <li><a href="#/home">Home</a></li>
+            </ul>
+        </nav>
 
-	</div>
+    </div>
 
-	<br>
+    <br>
 
-	<div ng-controller="searchController as search1">
-		<form>
-			<input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter hereeee">
+    <div ng-controller="searchController as search1">
+        <form>
+            <input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter hereeee">
 
-			<span>
+            <span>
 				
 					<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)">
 						<button class="homeButton">
@@ -49,43 +52,50 @@
 						</button>
 					</a>
 			</span>
-		</form>
-	</div>
+        </form>
+    </div>
 
 
-	<br><br><h2>Search Results:</h2>
-<!--
+    <br><br>
+    <h2>Search Results:</h2>
+    <!--
 	this is how to retrive the search keyword from the resultsController
 -->
 
-<div ng-controller="resultsController as list">
-	<p>entered keyword:</p>
-	<p ng-repeat="keyword in list.searchService">
-		{{keyword.text}}
-	</p>
-</div>
+    <div ng-controller="resultsController as list">
+        <p>entered keyword:</p>
+        <p ng-repeat="keyword in list.searchService">
+            {{keyword.text}}
+        </p>
+    </div>
 
-<!-- end -->
+    <!-- end -->
 
-	<ul class="rig columns-3" ng-controller="Ctrllr">
-		<li><a href="#/view">
-			<img src="pic1.jpg">
-			<h3 class="h3class">Scientific Name</h3>
-			<p>Taxon Rank</p>
-			<p>distribution</p>
-		</a></li>
+    <ul class="rig columns-3" ng-controller="Ctrllr" name="resultset">
+        <li>
+            <a href="#/view">
+                <img src="pic1.jpg">
+                <h3 class="h3class">Scientific Name</h3>
+                <p>Taxon Rank</p>
+                <p>distribution</p>
+            </a>
+        </li>
 
-		<li ng repeat="data in records"><a href="#/view"> <!-- to be filled -->
-			<img src="{{imageLink}}">
-			<h3 class="h3class">{{scientificName}}</h3>
-			<p>{{taxonRank}}</p>
-			<p>{{distribution}}</p>
-		</a></li>
-	</ul>
+        <li ng repeat="data in records">
+            <a href="#/view">
+                <!-- to be filled -->
+                <img src="{{imageLink}}">
+                <h3 class="h3class">{{scientificName}}</h3>
+                <p>{{taxonRank}}</p>
+                <p>{{distribution}}</p>
+            </a>
+        </li>
+    </ul>
 
-	<footer>
-		<p>Software Engineering Group Project | G52GRP</p>
-	</footer>
+    <footer>
+        <p>Software Engineering Group Project | G52GRP</p>
+    </footer>
 
 </body>
+
 </html>
