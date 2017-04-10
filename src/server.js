@@ -26,17 +26,17 @@ MongoClient.connect(url, function(err, db) {
     var collection = db.collection('merge');
 
 
-    app.get('/result/:_id', function(req, res){
-		var objectid = "ObjectId(\"" + req.params._id + "\")";
-    	collection.find(objectid, function(err,data){
-    		if(err){
-    			console.log(err);
-    		}else{
-    		console.log(data);
-    		res.send(data);
-    		}
-    		})
-    	});
+    app.get('/result/:_id', function(req, res) {
+        var objectid = "ObjectId(\"" + req.params._id + "\")";
+        collection.find(objectid, function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+                res.send(data);
+            }
+        })
+    });
 
     app.get('/find/:name', function(req, res) {
         console.log(req.params)
@@ -53,7 +53,21 @@ MongoClient.connect(url, function(err, db) {
 
             }
         })
+    });
 
+    app.post('/fupdoc/:upt', function(req, res) {
+        console.log(req.params)
+        collection.update({}, {
+            $set: {
+                //Add a field
+            }
+        }, function(err, data) {
+            if (err)
+                console.log(err);
+            else {
+                console.log(data);
+            }
+        })
     });
 
 });
