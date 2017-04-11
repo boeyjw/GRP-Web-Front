@@ -54,7 +54,7 @@ replantMain.controller("resultsController", function($http, $scope, searchServic
     self.searchService = searchService.list;
 
     $http.get('/find/' + searchService.list.pop().text).then(function(res) {
-        console.log(res);
+        console.log(res.data);
         $scope.resultset = res.data;
     })
 });

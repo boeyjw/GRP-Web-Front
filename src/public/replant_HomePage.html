@@ -1,99 +1,52 @@
 <html ng-app="replantMain">
+
 <head>
-	<title>Replant</title>
-	<link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
+    <title>Replant</title>
+    <link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
 
-	<!-- link to angularJS libraries -->
+    <!-- link to angularJS libraries -->
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 
-	<!-- Link to the main js file -->
+    <!-- Link to the main js file -->
 
-	<script type="text/javascript" src="theMainScript.js"></script>
+    <script type="text/javascript" src="theMainScript.js"></script>
 
 </head>
+
 <body>
 
-<!--  The Query Block  -->
+    <header>
+        <h1>Replant</h1>
+    </header>
 
-	<!-- <script>
-		<p>Hello</p>
-		var app = angular.module("replantMain", []);
+    <div class="containerBox">
 
-		app.controller("homeController", function($scope){
+        <img src="pic1.jpg" align="middle">
 
-			$scope.searchKey = function(){
-				console.log($scope.searchterm);
-				$http.get('/search/' + $scope.searchterm).then(function(res) {
-					//$scope.publish = res.data;
-					console.log(res);
-				})
-				.catch(function(err) {
-					console.log(err);
-				})
-			}
+    </div>
 
-		});
+    <h3>Search here. Anything.</h3>
 
+    <div ng-controller="searchController as search1" class="inputmiddle">
 
-	</script> -->
-
-<!--  The Query Block End  -->
-
-
-	<header><h1>Replant</h1></header>
-
-	<div class="containerBox">
-
-		<img src="pic1.jpg" align="middle">
-
-	</div>
-
-	<h3>Search here. Anything.</h3>
-
-	<p>this is test 12</p>
-	
-	<div  ng-controller="searchController as search1" class="inputmiddle">
-
-		<form class="form-wrapper cf">
-			<input type="text" ng-model="search1.newKeyword" placeholder="enter here">
-			<span>
+        <form class="form-wrapper cf">
+            <input type="text" ng-model="search1.newKeyword" placeholder="enter here">
+            <span>
 				<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)"><button>Search!</button></a>
 			</span>
-		</form>
+        </form>
 
-	</div>
-	
-	<table class = "table">
-	<thead>
-		<tr>
-			<th>taxonID</th>
-			<th>ScientificName</th>
-			<th>genericName</th>
-			<th>&nbsp;</th>
+    </div>
 
-		</tr>
-	</thead>
-	<tbody>
-			<tr ng-repeat= "db in merge ">
-			<form ng-submit="search()">
-			<td>{{db._id}}</td>
-			<td>{{db.ScientificName}}</td>
-			</form>
-			</tr>
-	</tbody>
-	</table>
-		
+    <footer>
+        <p>Software Engineering Group Project | G52GRP</p>
+    </footer>
+    <script src="controller/controller.js"></script>
 
-	<!--</div>-->
-
-	<footer>
-		<p>Software Engineering Group Project | G52GRP</p>
-	</footer>
-	<script src = "controller/controller.js"></script>
-	
 
 </body>
+
 </html>

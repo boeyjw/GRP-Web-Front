@@ -62,32 +62,16 @@
 	this is how to retrive the search keyword from the resultsController
 -->
 
-    <div ng-controller="resultsController as list">
-        <p>entered keyword:</p>
-        <p ng-repeat="keyword in list.searchService">
-            {{keyword.text}}
-        </p>
-    </div>
-
     <!-- end -->
 
-    <ul class="rig columns-3" ng-controller="Ctrllr" name="resultset">
-        <li>
-            <a href="#/view">
-                <img src="pic1.jpg">
-                <h3 class="h3class">Scientific Name</h3>
-                <p>Taxon Rank</p>
-                <p>distribution</p>
-            </a>
-        </li>
-
-        <li ng repeat="data in records">
-            <a href="#/view">
+    <ul class="rig columns-3" ng-controller="resultsController" ng-model="resultset">
+        <li ng-repeat="obj in resultset">
+            <a href="#/view" value={{obj._id}}>
                 <!-- to be filled -->
-                <img src="{{imageLink}}">
-                <h3 class="h3class">{{scientificName}}</h3>
-                <p>{{taxonRank}}</p>
-                <p>{{distribution}}</p>
+                <img src={{obj.multimedia[0].identifier}}>
+                <h3 class="h3class">{{obj.scientificName}}</h3>
+                <p>Taxon Rank: {{obj.rank}}</p>
+                <p>Distribution: {{obj.distribution}}</p>
             </a>
         </li>
     </ul>
