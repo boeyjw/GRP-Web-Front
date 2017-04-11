@@ -44,7 +44,18 @@ MongoClient.connect(url, function(err, db) {
             "$text": {
                 "$search": req.params.name
             }
-        }, { scientificName: 1, gbif_taxonID: 1, ncbi_tax_id: 1, canonicalName: 1, parentTaxId: 1, rank: 1, 'multimedia.identifier': 1, taxonRank: 1, distribution: 1 }).toArray(function(err, data) {
+        }, {
+            scientificName: 1,
+            gbif_taxonID: 1,
+            ncbi_tax_id: 1,
+            canonicalName: 1,
+            parentTaxId: 1,
+            rank: 1,
+            'multimedia.identifier': 1,
+            taxonRank: 1,
+            distribution: 1,
+            'names.name': 1
+        }).toArray(function(err, data) {
             if (err) {
                 console.log(err);
             } else {
