@@ -45,7 +45,6 @@
             <input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter hereeee">
 
             <span>
-				
 					<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)">
 						<button class="homeButton">
 							Search!
@@ -69,12 +68,9 @@
             <a href="#/view" value={{obj._id}}>
                 <!-- to be filled -->
                 <img src={{obj.multimedia[0].identifier}}>
-                <h3 class="h3class">{{obj.scientificName}}</h3>
-                <p>Taxon Rank: {{obj.rank}}</p>
-                <p>
-                    Other names:&nbsp
-                    <span ng-repeat="ncbinames in obj.names">{{ncbinames.name}},</span>
-                </p>
+                <h3 class="h3class" ng-bind="obj.scientificName"></h3>
+                <p>Taxon Rank:&nbsp<span ng-bind="obj.rank"></span></p>
+                <p>Other names:&nbsp<span ng-repeat="ncbinames in obj.names" ng-bind="ncbinames.name"></span><span>,&nbsp</span></p>
             </a>
         </li>
     </ul>
