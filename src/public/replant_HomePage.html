@@ -3,6 +3,8 @@
 <head>
     <title>Replant</title>
     <link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="buttonCSS.css">
+    <link rel="stylesheet" type="text/css" href="cssFiles/searchBoxNew.css">
 
     <!-- link to angularJS libraries -->
 
@@ -28,15 +30,18 @@
 
     </div>
 
-    <h3>Search here. Anything.</h3>
+    <h3>Search your plants. Here.</h3>
 
     <div ng-controller="searchController as search1" class="inputmiddle">
 
         <form class="form-wrapper cf">
-            <input type="text" ng-model="search1.newKeyword" placeholder="enter here">
+            <input type="text" ng-model="newKeyword" placeholder="enter here">
+
             <span>
-				<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)"><button>Search!</button></a>
-			</span>
+                <a href="#/result" ng-click="search1.addKeyword()">
+                    <button class="button">Search!</button>
+                </a>
+            </span>
         </form>
 
     </div>

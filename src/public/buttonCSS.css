@@ -1,5 +1,5 @@
 .homeButton{
-		overflow: visible;
+        overflow: visible;
         /*position: relative;*/
         float: left;
         border: 0;
@@ -17,9 +17,9 @@
         text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
 }
 
-.homeButton:hover{		
+.homeButton:hover{      
         background: #77ab59;
-    }	
+    }   
       
 .homeButton:active,
 .homeButton:focus{   

@@ -19,11 +19,22 @@
 	<script type="text/javascript" src="theMainScript.js"></script>
 
 </head>
-<body>
+<body ng-app="replantMain" ng-controller="displayAll" ng-model="thePlant">
 	<header><h1>Replant</h1></header>
 
+	<div class="content">
+
+        <nav>
+            <ul>
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/result">Results Page</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
 	<div class="boxedImage">
-		<img class="viewimage" src="pic2.jpg">
+		<img class="viewimage" src={{thePlant.multimedia[0].identifier}}>
 		<div class="boxContainer">
 			<p>Plant Name</p>
 		</div>

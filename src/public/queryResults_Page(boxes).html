@@ -42,11 +42,11 @@
 
     <div ng-controller="searchController as search1">
         <form>
-            <input class="searchInput" type="text" ng-model="search1.newKeyword" placeholder="enter hereeee">
+            <input class="searchInput" type="text" ng-model="newKeyword" placeholder="enter hereeee">
 
             <span>
 				
-					<a href="#/result" ng-click="search1.addKeyword(search1.newKeyword)">
+					<a href="#/result" ng-click="search1.addKeyword()">
 						<button class="homeButton">
 							Search!
 						</button>
@@ -58,15 +58,10 @@
 
     <br><br>
     <h2>Search Results:</h2>
-    <!--
-	this is how to retrive the search keyword from the resultsController
--->
-
-    <!-- end -->
 
     <ul class="rig columns-3" ng-controller="resultsController" ng-model="resultset">
-        <li ng-repeat="obj in resultset">
-            <a href="#/view" value={{obj._id}}>
+        <li ng-repeat="obj in resultset | filter: newKeyword">
+            <a href="#/view" value={{obj._id}} ng-click="resultsController.addID()">
                 <!-- to be filled -->
                 <img src={{obj.multimedia[0].identifier}}>
                 <h3 class="h3class">{{obj.scientificName}}</h3>
@@ -75,6 +70,8 @@
             </a>
         </li>
     </ul>
+        
+    </div>
 
     <footer>
         <p>Software Engineering Group Project | G52GRP</p>

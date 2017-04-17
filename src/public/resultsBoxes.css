@@ -30,9 +30,11 @@ ul.rig li h3{
 }
 
 ul.rig li p{
-	font-size: .9em;
+	/*font-family: ;*/
+	/*font-size: .9em;*/
+	font-size: 15pt;
 	line-height: 1.5em;
-	color: #999;
+	color: black;
 }
 
 /*class for 2 columns*/
@@ -69,6 +71,7 @@ ul.rig.columns-4 li{
 
 .h3class{
 	font-size: 25px;
+	color: black;
 }
 
 a{

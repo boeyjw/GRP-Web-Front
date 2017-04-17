@@ -22,7 +22,7 @@ replantMain.config(function($routeProvider) {
 //searched keyword will be stored in 'savedKeyword.list'
 
 
-replantMain.factory('searchService', function() {
+/*replantMain.factory('searchService', function() {
     var searchService = {} //new empty object
 
     searchService.list = [];
@@ -33,28 +33,43 @@ replantMain.factory('searchService', function() {
     };
 
     return searchService; //return object
-});
+});*/
 
-replantMain.controller("searchController", function(searchService) {
+var keyword;
+
+replantMain.controller("searchController", function($scope) {
     var self = this;
 
-    self.newKeyword = '';
+    //self.newKeyword = '';
 
-    self.addKeyword = function(keyword) {
-        searchService.add(keyword);
-        self.newKeyword = '';
+    self.addKeyword = function() {
+        //searchService.add(keyword);
+        //self.newKeyword = '';
+        keyword = $scope.newKeyword;
     };
 
 });
 
 //controller for second page (queryResults_Page(boxes).html)
-replantMain.controller("resultsController", function($http, $scope, searchService) {
+replantMain.controller("resultsController", function($http, $scope) {
     var self = this;
 
-    self.searchService = searchService.list;
+    //self.searchService = searchService.list;
 
-    $http.get('/find/' + searchService.list.pop().text).then(function(res) {
+    $http.get('/find/' + keyword).then(function(res) {
         console.log(res.data);
         $scope.resultset = res.data;
+    })
+
+    self.addID = function(){
+        idValue = $scope.obj._id;
+    }
+});
+
+replantMain.controller("displayAll", function($http, $scope){
+
+    $http.get('/result/' + idValue).then(function(res){
+        console.log(res.data);
+        $scope.thePlant = res.data;
     })
 });

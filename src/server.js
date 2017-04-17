@@ -28,6 +28,7 @@ MongoClient.connect(url, function(err, db) {
 
     app.get('/result/:_id', function(req, res) {
         var objectid = "ObjectId(\"" + req.params._id + "\")";
+        console.log(req.params._id)
         collection.find(objectid, function(err, data) {
             if (err) {
                 console.log(err);
