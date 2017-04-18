@@ -37,7 +37,7 @@ replantMain.config(function($routeProvider) {
 
 var keyword;
 
-replantMain.controller("searchController", function($scope) {
+replantMain.controller("searchController", function($scope, $route) {
     var self = this;
 
     //self.newKeyword = '';
@@ -46,6 +46,7 @@ replantMain.controller("searchController", function($scope) {
         //searchService.add(keyword);
         //self.newKeyword = '';
         keyword = $scope.newKeyword;
+        $route.reload("#/result");
     };
 
 });

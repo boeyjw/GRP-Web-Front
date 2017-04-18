@@ -42,7 +42,7 @@
 
     <div ng-controller="searchController as search1">
         <form>
-            <input class="searchInput" type="text" ng-model="newKeyword" placeholder="enter hereeee">
+            <input class="searchInput" type="text" ng-model="newKeyword" placeholder="search plant">
 
             <span>
 				
@@ -62,15 +62,12 @@
     <ul class="rig columns-3" ng-controller="resultsController" ng-model="resultset">
         <li ng-repeat="obj in resultset | filter: newKeyword">
             <a href="#/view" value={{obj._id}} ng-click="resultsController.addID()">
-                <!-- to be filled -->
+
+                <!-- display the picture of plant -->
                 <img ng-if="obj.multimedia[0].identifier" src={{obj.multimedia[0].identifier}}>
                 <img ng-if="!obj.multimedia[0].identifier" src="pictures/defaultPic.jpg">
 
-                <!-- {{if !obj.multimedia[0].identifier}}
-                <img src="pic1.jpg">
-                {{else}}
-                <img src={{obj.multimedia[0].identifier}}> -->
-
+                <!-- display the information of plant -->
                 <h3 class="h3class" ng-bind="obj.scientificName"></h3>
                 <p>Taxon Rank:&nbsp<span ng-bind="obj.rank"></span></p>
                 <p>Other names:&nbsp<span ng-repeat="ncbinames in obj.names" ng-bind="ncbinames.name"></span><span>,&nbsp</span></p>
