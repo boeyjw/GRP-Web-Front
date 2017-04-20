@@ -55,7 +55,7 @@ replantMain.controller("searchController", function($scope, $route) {
 
 
 //controller for second page (queryResults_Page(boxes).html)
-replantMain.controller("resultsController", function($http, $scope, $route) {
+replantMain.controller("resultsController", function($http, $scope, $route, $location) {
     var self = this;
 
     //self.searchService = searchService.list;
@@ -69,7 +69,8 @@ replantMain.controller("resultsController", function($http, $scope, $route) {
         //searchService.add(keyword);
         //self.newKeyword = '';
         console.log($scope.resultset[$index]._id);
-        $route.reload("#/view");
+        keyword2 = $scope.resultset[$index]._id;
+        $location.path("#/view");
     };
 
 
@@ -90,8 +91,8 @@ replantMain.controller("resultsController", function($http, $scope, $route) {
 
 });*/
 
-replantMain.controller("displayAll", function($http, $scope) {
-
+replantMain.controller("displayAll", function($http, $scope, $location) {
+    console.log(keyword2);
     $http.get('/result/' + keyword2).then(function(res, err) {
         if (err) {
             console.log(err)

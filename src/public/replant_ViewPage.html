@@ -21,7 +21,7 @@
 
 </head>
 
-<body ng-app="replantMain" ng-controller="displayAll" ng-model="newKeyword2">
+<body ng-app="replantMain" ng-model="newKeyword2">
     <header style="height: 50px;">
         <h1 style="font-size: 25px;">Replant</h1>
     </header>
@@ -37,7 +37,7 @@
 
     </div>
 
-    <div style="margin-top: -60pt;">
+    <div style="margin-top: -60pt;" ng-controller="displayAll">
         <div class="boxedImage">
             <img class="viewimage" src={{thePlant.multimedia[0].identifier}}>
             <div class="boxContainer">

@@ -4,6 +4,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongodb = require('mongodb');
+var ObjectId = require('mongodb').ObjectId;
 var MongoClient = mongodb.MongoClient;
 //var url = 'mongodb://localhost:27017/g52grp';
 var url = 'mongodb://haploid:f1du-c1ary@g52grp-shard-00-00-sdhki.mongodb.net:27017,g52grp-shard-00-01-sdhki.mongodb.net:27017,g52grp-shard-00-02-sdhki.mongodb.net:27017/g52grp?ssl=true&replicaSet=g52grp-shard-0&authSource=admin'
@@ -27,9 +28,9 @@ MongoClient.connect(url, function(err, db) {
 
 
     app.get('/result/:_id', function(req, res) {
-        var objectid = "ObjectId(\"" + req.params._id + "\")";
-        console.log(req.params);
-        collection.find(objectid, function(err, data) {
+        collection.findOne({
+            "_id": new ObjectId(req.params._id)
+        }, function(err, data) {
             if (err) {
                 console.log(err);
             } else {
