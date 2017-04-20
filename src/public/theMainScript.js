@@ -36,6 +36,7 @@ replantMain.config(function($routeProvider) {
 });*/
 
 var keyword;
+var keyword2;
 
 replantMain.controller("searchController", function($scope, $route) {
     var self = this;
@@ -51,8 +52,10 @@ replantMain.controller("searchController", function($scope, $route) {
 
 });
 
+
+
 //controller for second page (queryResults_Page(boxes).html)
-replantMain.controller("resultsController", function($http, $scope) {
+replantMain.controller("resultsController", function($http, $scope,$route) {
     var self = this;
 
     //self.searchService = searchService.list;
@@ -62,15 +65,40 @@ replantMain.controller("resultsController", function($http, $scope) {
         $scope.resultset = res.data;
     })
 
-    self.addID = function(){
-        idValue = $scope.obj._id;
-    }
+        self.addKeyword2 = function() {
+        //searchService.add(keyword);
+        //self.newKeyword = '';
+        keyword2 = $scope.newKeyword2;
+        $route.reload("#/view");
+    };
+
+
 });
+
+//================================================================================================================================================================
+/*replantMain.controller("search2Controller", function($scope, $route) {
+    var self = this;
+
+    //self.newKeyword = '';
+
+    self.addKeyword = function() {
+        //searchService.add(keyword);
+        //self.newKeyword = '';
+        keyword2 = $scope.thePlant;
+        $route.reload("#/view");
+    };
+
+});*/
 
 replantMain.controller("displayAll", function($http, $scope){
 
-    $http.get('/result/' + idValue).then(function(res){
+    $http.get('/result/' + keyword2).then(function(res,err){
+        if(err){
+            console.log(err)
+        }
+        else{
         console.log(res.data);
         $scope.thePlant = res.data;
+    }
     })
 });
