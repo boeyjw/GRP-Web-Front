@@ -20,6 +20,8 @@ replantMain.config(function($routeProvider) {
 
 //new 'service' created to store searched keyword
 //searched keyword will be stored in 'savedKeyword.list'
+
+
 /*replantMain.factory('searchService', function() {
     var searchService = {} //new empty object
 
@@ -53,7 +55,7 @@ replantMain.controller("searchController", function($scope, $route) {
 
 
 //controller for second page (queryResults_Page(boxes).html)
-replantMain.controller("resultsController", function($http, $scope, $route, $location) {
+replantMain.controller("resultsController", function($http, $scope, $route) {
     var self = this;
 
     //self.searchService = searchService.list;
@@ -66,8 +68,9 @@ replantMain.controller("resultsController", function($http, $scope, $route, $loc
     self.addKeyword2 = function(_id) {
         //searchService.add(keyword);
         //self.newKeyword = '';
-        var keyword2 = _id;
-        $location.path("/view/" + _id);
+        keyword2 = _id;
+        console.log(_id);
+        $route.reload("#/view");
     };
 
 
@@ -89,8 +92,8 @@ replantMain.controller("resultsController", function($http, $scope, $route, $loc
 });*/
 
 replantMain.controller("displayAll", function($http, $scope) {
-    console.log(_id);
-    $http.get('/view/' + _id).then(function(res, err) {
+
+    $http.get('/result/' + keyword2).then(function(res, err) {
         if (err) {
             console.log(err)
         } else {

@@ -26,7 +26,7 @@ MongoClient.connect(url, function(err, db) {
     var collection = db.collection('merge');
 
 
-    app.get('/view/:_id', function(req, res) {
+    app.get('/result/:_id', function(req, res) {
         var objectid = "ObjectId(\"" + req.params._id + "\")";
         console.log(req.params);
         collection.find(objectid, function(err, data) {
