@@ -6,7 +6,7 @@
 	<!-- link to all CSS files -->
 
 	<link rel="stylesheet" type="text/css" href="maincss.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="viewPage.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="cssFiles/viewPage.css" media="screen" />
 
 	<!-- Link to all angularJS library -->
 
@@ -20,9 +20,11 @@
 
 </head>
 <body ng-app="replantMain" ng-controller="displayAll" ng-model="thePlant">
-	<header><h1>Replant</h1></header>
+	<header style="height: 50px;">
+		<h1 style="font-size: 25px;">Replant</h1>
+	</header>
 
-	<div class="content">
+	<div class="content" style="margin-top: 38pt;">
 
         <nav>
             <ul>
@@ -33,21 +35,23 @@
 
     </div>
 
-	<div class="boxedImage">
-		<img class="viewimage" src={{thePlant.multimedia[0].identifier}}>
-		<div class="boxContainer">
-			<p>Plant Name</p>
+    <div style="margin-top: -60pt;">
+    	<div class="boxedImage">
+			<img class="viewimage" src={{thePlant.multimedia[0].identifier}}>
+			<div class="boxContainer">
+				<h2>Plant Name</h2>
+			</div>
 		</div>
-	</div>
 
-	<div class="plantDetails">
-	<ul>
-		<li>this is list 1: </li>
-		<li>this is list 2: </li>
-	</ul>
+		<div class="plantDetails">
+			<ul>
+				<li>this is list 1: </li>
+				<li>this is list 2: </li>
+			</ul>
 
-		<!-- <p>this is list 1</p> -->
-	</div>
+				<!-- <p>this is list 1</p> -->
+		</div>
+    </div>
 
 	<footer>
 		<p>Software Engineering Group Project | G52GRP</p>

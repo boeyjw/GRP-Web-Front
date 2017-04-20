@@ -19,6 +19,7 @@ div.boxContainer {
 div.plantDetails {
 	float: left;
 	display: block;
+	font-size: 20pt;
 	margin-top: 110px;
 	margin-left: 50px;
 }

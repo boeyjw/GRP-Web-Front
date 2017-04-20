@@ -24,29 +24,33 @@
 
 <body ng-app="replantMain">
 
-    <header>
-        <h1>Replant</h1>
+    <header style="height: 50px;">
+        <h1 style="font-size: 25px;">Replant</h1>
     </header>
 
-    <div class="content">
+    <div class="content" style="position: fixed; margin-left: -7pt; margin-top: 28pt; margin-bottom: 25pt;">
 
         <nav>
             <ul>
                 <li><a href="#/home">Home</a></li>
+                <li><input class="searchInput" type="text" ng-model="newKeyword" placeholder="filter results" style="margin-top: 10pt; margin-bottom: -10pt; background-color: white;"></li>
             </ul>
         </nav>
 
     </div>
 
     <br>
+        <!-- <input class="searchInput" type="text" ng-model="newKeyword" placeholder="search plant" style="float: right; position: relative; margin-top: 200pt;"> -->
 
     <div ng-controller="searchController as search1">
-        <form>
-            <input class="searchInput" type="text" ng-model="newKeyword" placeholder="search plant">
+
+
+        <form style="position: fixed; margin-top: 70pt;">
+            <input class="searchInput" type="text" ng-model="newKeyword" placeholder="search plant" style="float: left;">
 
             <span>
 				
-					<a href="#/result" ng-click="search1.addKeyword()">
+					<a href="#/result" ng-click="search1.addKeyword()" style="float: left;">
 						<button class="homeButton">
 							Search!
 						</button>
@@ -57,9 +61,9 @@
 
 
     <br><br>
-    <h2>Search Results:</h2>
+    <h2 style="margin-top: 80pt;">Search Results:</h2>
 
-    <ul class="rig columns-3" ng-controller="resultsController" ng-model="resultset">
+    <ul class="rig columns-4" ng-controller="resultsController" ng-model="resultset" >
         <li ng-repeat="obj in resultset | filter: newKeyword">
             <a href="#/view" value={{obj._id}} ng-click="resultsController.addID()">
 
@@ -75,7 +79,7 @@
         </li>
     </ul>
         
-    </div>
+    <!-- </div> -->
 
     <footer>
         <p>Software Engineering Group Project | G52GRP</p>
