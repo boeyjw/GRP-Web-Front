@@ -63,9 +63,9 @@
     <br><br>
     <h2 style="margin-top: 80pt;">Search Results:</h2>
 
-    <ul class="rig columns-4" ng-controller="resultsController as search2" ng-model="newKeyword2">
-        <li ng-repeat="obj in resultset | filter: newKeyword">
-            <a href="#/view" value={{obj._id}} ng-click="search2.addKeyword2(obj._id)">
+    <ul class="rig columns-4" ng-controller="resultsController as search2">
+        <li ng-repeat="obj in resultset | filter: newKeyword" ng-model="newKeyword2">
+            <a href="#/view" value={{obj._id}} ng-click="search2.addKeyword2($index)">
 
                 <!-- display the picture of plant -->
                 <img ng-if="obj.multimedia[0].identifier" src={{obj.multimedia[0].identifier}}>

@@ -65,11 +65,10 @@ replantMain.controller("resultsController", function($http, $scope, $route) {
         $scope.resultset = res.data;
     })
 
-    self.addKeyword2 = function(_id) {
+    self.addKeyword2 = function($index) {
         //searchService.add(keyword);
         //self.newKeyword = '';
-        keyword2 = _id;
-        console.log(_id);
+        console.log($scope.resultset[$index]._id);
         $route.reload("#/view");
     };
 
